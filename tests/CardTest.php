@@ -13,7 +13,7 @@ class CardTest extends PHPUnit_Framework_TestCase
      */
     public function setUp()
     {
-        $this->card = new Card(2, 4, 3, 5, 8, 1);
+        $this->card = new Card('Faggot', 2, 4, 3, 5, 8, 1);
     }
 
     /**
@@ -29,6 +29,7 @@ class CardTest extends PHPUnit_Framework_TestCase
      */
     public function cardHasStats()
     {
+        $this->assertEquals($this->card->getName(), 'Faggot');
         $this->assertEquals($this->card->getStrength(), 2);
         $this->assertEquals($this->card->getfearFactor(), 4);
         $this->assertEquals($this->card->getMagic(), 3);
