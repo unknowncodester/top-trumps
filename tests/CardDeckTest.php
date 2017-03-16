@@ -6,13 +6,21 @@ require "../app/classes/Card.php";
 
 class CardDeckTest extends PHPUnit_Framework_TestCase
 {
+    public $cardDeck;
+    /**
+     *
+     */
+    public function setUp()
+    {
+        $this->cardDeck = new CardDeck();
+    }
+
     /**
      * @test
      */
     public function canMakeACardDeck()
     {
-        $cardDeck = new CardDeck();
-        $this->assertInstanceOf(CardDeck::class, $cardDeck);
+        $this->assertInstanceOf(CardDeck::class, $this->cardDeck);
     }
 
     /**
@@ -20,8 +28,8 @@ class CardDeckTest extends PHPUnit_Framework_TestCase
      */
     public function aDeckContainsCards()
     {
-        $cardDeck = new CardDeck();
-        $cards = $cardDeck->getCards();
+
+        $cards = $this->cardDeck->getCards();
 
         foreach($cards as $card)
         {
@@ -34,10 +42,8 @@ class CardDeckTest extends PHPUnit_Framework_TestCase
      */
     public function canTakeACardOffTheDeck()
     {
-        $cardDeck = new CardDeck();
-        $cardDeck->removeCard();
-        $cards = $cardDeck->getCards();
-        $this->assertEquals(9, count($cards));
+        $this->cardDeck->removeCard();
+        $this->assertEquals(9, count($this->cardDeck->getCards()));
     }
 
     /**
@@ -45,11 +51,9 @@ class CardDeckTest extends PHPUnit_Framework_TestCase
      */
     public function canTakeManyCardsOffTheDeck()
     {
-        $cardDeck = new CardDeck();
-        $cardDeck->removeCard();
-        $cardDeck->removeCard();
-        $cards = $cardDeck->getCards();
-        $this->assertEquals(8, count($cards));
+        $this->cardDeck->removeCard();
+        $this->cardDeck->removeCard();
+        $this->assertEquals(8, count($this->cardDeck->getCards()));
     }
 }
 ?>
