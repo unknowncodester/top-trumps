@@ -8,7 +8,6 @@
  */
 class CardDeck
 {
-    public $deckOfCards = [];
     public $cards = [];
 
     public function __construct()
@@ -18,17 +17,17 @@ class CardDeck
 
     private function addCard($card)
     {
-        $this->deckOfCards[] = $card;
+        $this->cards[] = $card;
     }
 
     public function getCards()
     {
-        return $this->deckOfCards;
+        return $this->cards;
     }
 
     public function removeCard()
     {
-        $card = array_shift($this->deckOfCards);
+        $card = array_shift($this->cards);
         return $card;
     }
 
