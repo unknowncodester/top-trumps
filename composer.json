@@ -1,0 +1,14 @@
+{
+    "name": "root/top_trump",
+    "authors": [
+        {
+            "name": "Daniel Hardy",
+            "email": "daniel.hardy@sykescottages.co.uk"
+        }
+    ],
+    "require": {},
+
+	"require-dev": {
+        	"phpunit/phpunit": "3.7.*"
+    	}
+}
