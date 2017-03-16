@@ -7,9 +7,7 @@ require "../app/classes/Card.php";
 class CardDeckTest extends PHPUnit_Framework_TestCase
 {
     public $cardDeck;
-    /**
-     *
-     */
+
     public function setUp()
     {
         $this->cardDeck = new CardDeck();
