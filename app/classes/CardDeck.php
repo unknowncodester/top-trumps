@@ -12,7 +12,7 @@ class CardDeck
 
     public function __construct()
     {
-        $this->init();
+        $this->getInitialCards();
     }
 
     private function addCard($card)
@@ -29,12 +29,6 @@ class CardDeck
     {
         $card = array_shift($this->cards);
         return $card;
-    }
-
-    private function init()
-    {
-        $this->getInitialCards();
-        $this->shuffleCards();
     }
 
     private function getInitialCards()
@@ -55,10 +49,5 @@ class CardDeck
         foreach ($cards as $card){
             $this->addCard($card);
         }
-    }
-
-    private function shuffleCards()
-    {
-        shuffle($this->cards);
     }
 }

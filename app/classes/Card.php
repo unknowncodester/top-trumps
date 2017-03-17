@@ -8,52 +8,14 @@
  */
 class Card
 {
-    /**
-     * @var integer
-     */
     protected $name;
-
-    /**
-     * @var integer
-     */
     protected $strength;
-
-    /**
-     * @var integer
-     */
     protected $fearFactor;
-
-    /**
-     * @var integer
-     */
     protected $magic;
-
-    /**
-     * @var integer
-     */
     protected $rage;
-
-    /**
-     * @var integer
-     */
     protected $alchemy;
-
-    /**
-     * @var integer
-     */
     protected $stealth;
 
-    /**
-     * Card constructor.
-     *
-     * @param $name
-     * @param $strength
-     * @param $fearFactor
-     * @param $magic
-     * @param $rage
-     * @param $alchemy
-     * @param $stealth
-     */
     public function __construct($name, $strength, $fearFactor, $magic, $rage, $alchemy, $stealth)
     {
         $this->name = $name;
@@ -64,7 +26,6 @@ class Card
         $this->alchemy = $alchemy;
         $this->stealth = $stealth;
     }
-
 
     public function getName()
     {

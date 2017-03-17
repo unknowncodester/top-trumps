@@ -8,14 +8,7 @@
  */
 class Dealer
 {
-    /**
-     * @var array
-     */
     private $cards = [];
-
-    /**
-     * @var CardDeck
-     */
     private $cardDeck;
 
     public function __construct()
@@ -25,6 +18,12 @@ class Dealer
 
     public function getCards(){
         $this->cards = $this->cardDeck->getCards();
+        $this->shuffleCards();
         return $this->cards;
+    }
+
+    private function shuffleCards()
+    {
+        shuffle($this->cards);
     }
 }
