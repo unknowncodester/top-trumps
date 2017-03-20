@@ -1,7 +1,6 @@
 <?php
 
-require "../vendor/autoload.php";
-require "../app/classes/Card.php";
+require_once __DIR__ . "/../app/classes/Card.php";
 
 class CardTest extends PHPUnit_Framework_TestCase
 {
