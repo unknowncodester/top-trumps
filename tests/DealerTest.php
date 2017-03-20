@@ -1,8 +1,6 @@
 <?php
 
-require_once __DIR__ . "/../app/classes/CardDeck.php";
-require_once __DIR__ . "/../app/classes/Card.php";
-require_once __DIR__ . "/../app/classes/Dealer.php";
+require_once __DIR__ . "/../vendor/autoload.php";
 
 class DealerTest extends PHPUnit_Framework_TestCase
 {

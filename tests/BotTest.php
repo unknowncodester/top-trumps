@@ -1,6 +1,6 @@
 <?php
 
-require_once __DIR__ . "/../app/classes/Bot.php";
+require_once __DIR__ . "/../vendor/autoload.php";
 
 class BotTest extends PHPUnit_Framework_TestCase
 {

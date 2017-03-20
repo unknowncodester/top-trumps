@@ -1,7 +1,6 @@
 <?php
 
-require_once __DIR__ . "/../app/classes/CardDeck.php";
-require_once __DIR__ . "/../app/classes/Card.php";
+require_once __DIR__ . "/../vendor/autoload.php";
 
 class CardDeckTest extends PHPUnit_Framework_TestCase
 {
@@ -53,4 +52,3 @@ class CardDeckTest extends PHPUnit_Framework_TestCase
         $this->assertEquals(8, count($this->cardDeck->getCards()));
     }
 }
-?>
