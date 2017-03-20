@@ -1,7 +1,5 @@
 <?php
 
-require_once __DIR__ . "/../vendor/autoload.php";
-
 class BotTest extends PHPUnit_Framework_TestCase
 {
     private $bot;
@@ -39,7 +37,7 @@ class BotTest extends PHPUnit_Framework_TestCase
         $this->assertEquals($expectedStat, $this->bot->takeTurn());
     }
 
-    private function cardProvider()
+    public function cardProvider()
     {
         return [
             [

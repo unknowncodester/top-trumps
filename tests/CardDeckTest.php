@@ -1,7 +1,5 @@
 <?php
 
-require_once __DIR__ . "/../vendor/autoload.php";
-
 class CardDeckTest extends PHPUnit_Framework_TestCase
 {
     public $cardDeck;
