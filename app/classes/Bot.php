@@ -3,25 +3,37 @@
 class Bot
 {
     public $cardDeck = [];
+    public $name;
+
+    public function __construct($name)
+    {
+        $this->name = $name;
+    }
+
+    public function getName()
+    {
+        return $this->name;
+    }
 
     public function takeTurn()
     {
-        $card = $this->getCard();
-        return $this->getHighestStat($card);
+        return $this->getHighestStat();
     }
 
-    public function giveCard(Card $card)
+    public function collectCard(Card $card)
     {
         $this->cardDeck[] = $card;
     }
 
-    private function getCard()
+    public function getCard()
     {
         return array_shift($this->cardDeck);
     }
 
-    private function getHighestStat(Card $card)
+    private function getHighestStat()
     {
+        $card = current($this->cardDeck);
+
         $stats = [
             "Alchemy" => $card->getAlchemy(),
             "Fear Factor" => $card->getFearFactor(),

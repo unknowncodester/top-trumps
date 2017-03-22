@@ -6,7 +6,7 @@ class BotTest extends PHPUnit_Framework_TestCase
 
     public function setUp()
     {
-        $this->bot = new Bot();
+        $this->bot = new Bot("Barry");
     }
 
     /**
@@ -20,10 +20,18 @@ class BotTest extends PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function botReceivesACard()
+    public function canGetName()
+    {
+        $this->assertEquals("Barry", $this->bot->getName());
+    }
+
+    /**
+     * @test
+     */
+    public function canCollectACard()
     {
         $initialDeckSize = count($this->bot->cardDeck);
-        $this->bot->giveCard(new Card("Lab rat", 10, 6, 5, 3, 5, 4));
+        $this->bot->collectCard(new Card("Lab rat", 10, 6, 5, 3, 5, 4));
         $this->assertEquals($initialDeckSize + 1, count($this->bot->cardDeck));
     }
 
@@ -33,7 +41,7 @@ class BotTest extends PHPUnit_Framework_TestCase
      */
     public function choosesHighestValueStat($card, $expectedStat)
     {
-        $this->bot->giveCard($card);
+        $this->bot->collectCard($card);
         $this->assertEquals($expectedStat, $this->bot->takeTurn());
     }
 
