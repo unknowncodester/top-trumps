@@ -29,5 +29,69 @@ class DealerTest extends PHPUnit_Framework_TestCase
             $this->assertInstanceOf(Card::class, $card);
         }
     }
+
+    /**
+     * @test
+     * @dataProvider cardProvider
+     * @param $cards
+     * @param $expectedBotOneCardCount
+     * @param $expectedBotTwoCardCount
+     */
+    public function dealsCardFairly($cards, $expectedBotOneCardCount, $expectedBotTwoCardCount)
+    {
+        $botOne = new Bot('bot one');
+        $botTwo = new Bot('bot two');
+        $this->dealer->dealCards($botOne, $botTwo, $cards);
+        $this->assertEquals($expectedBotOneCardCount, count($botOne->cardDeck));
+        $this->assertEquals($expectedBotTwoCardCount, count($botTwo->cardDeck));
+    }
+
+
+    public function cardProvider()
+    {
+        return [
+            [
+                $this->createCards(10),
+                5,
+                5
+            ],
+            [
+                $this->createCards(16),
+                8,
+                8
+            ],
+            [
+                $this->createCards(5),
+                3,
+                2
+            ],
+            [
+                $this->createCards(0),
+                0,
+                0
+            ],
+            [
+                $this->createCards(1),
+                1,
+                0
+            ]
+        ];
+    }
+
+    /**
+     * test helper function to make x amount of cards
+     *
+     * @param $amountOfCards
+     * @return array
+     */
+    private function createCards($amountOfCards)
+    {
+        $cards = [];
+
+        for($i = 0; $i < $amountOfCards; $i++ ){
+            $cards[] = new Card("Foo bar", 10, 6, 5, 3, 5, 4);
+        }
+        return $cards;
+    }
 }
 ?>

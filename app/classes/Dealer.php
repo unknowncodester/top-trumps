@@ -8,7 +8,6 @@
  */
 class Dealer
 {
-    private $cards = [];
     private $cardDeck;
 
     public function __construct()
@@ -17,13 +16,26 @@ class Dealer
     }
 
     public function getCards(){
-        $this->cards = $this->cardDeck->getCards();
-        $this->shuffleCards();
-        return $this->cards;
+        $cards = $this->cardDeck->getCards();
+        return $this->shuffleCards($cards);
     }
 
-    private function shuffleCards()
+    private function shuffleCards($cards)
     {
-        shuffle($this->cards);
+        shuffle($cards);
+        return $cards;
+    }
+
+    public function dealCards(Bot $botOne, Bot $botTwo, $cards)
+    {
+        for($i = 0; $i < count($cards); $i++){
+            if($i == 0){
+                $botOne->collectCard($cards[$i]);
+            }elseif($i % 2 == 0){
+                $botOne->collectCard($cards[$i]);
+            }else{
+                $botTwo->collectCard($cards[$i]);
+            }
+        }
     }
 }
