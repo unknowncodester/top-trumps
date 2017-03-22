@@ -10,15 +10,19 @@ class Game
 {
     public $botOne;
     public $botTwo;
+    public $dealer;
 
     public function __construct()
     {
+        $this->botOne = new Bot("Barry");
+        $this->botTwo = new Bot("Rachel");
+        $this->dealer = new Dealer();
         $this->initGame();
     }
 
     public function initGame()
     {
-        $this->botOne = new Bot("Barry");
-        $this->botTwo = new Bot("Rachel");
+        $cards = $this->dealer->getCards();
+        $this->dealer->dealCards($this->botOne, $this->botTwo, $cards);
     }
 }

@@ -2,13 +2,20 @@
 
 class GameTest extends PHPUnit_Framework_TestCase
 {
+
+    public $game;
+
+    public function setUp()
+    {
+        $this->game = new Game();
+    }
+
     /**
      * @test
      */
     public function canCreateAGame()
     {
-        $game = new Game();
-        $this->assertInstanceOf(Game::class, $game);
+        $this->assertInstanceOf(Game::class, $this->game);
     }
 
     /**
@@ -16,8 +23,15 @@ class GameTest extends PHPUnit_Framework_TestCase
      */
     public function newGameHasTwoBots()
     {
-        $game = new Game();
-        $this->assertInstanceOf(Bot::class, $game->botOne);
-        $this->assertInstanceOf(Bot::class, $game->botTwo);
+        $this->assertInstanceOf(Bot::class, $this->game->botOne);
+        $this->assertInstanceOf(Bot::class, $this->game->botTwo);
+    }
+
+    /**
+     * @test
+     */
+    public function newGameHasADealer()
+    {
+        $this->assertInstanceOf(Dealer::class, $this->game->dealer);
     }
 }
