@@ -61,4 +61,37 @@ class Card
     {
         return $this->stealth;
     }
+
+    /**
+     * Compare the current card to another card for a given stat
+     * The current card has a slight advantage....
+     * ... if cards are equal current card wins
+     *
+     * @param Card $otherCard - the card to compare against
+     * @param $string - name of the stat to compare
+     * @return bool
+     */
+    public function compareTo(Card $otherCard, $string)
+    {
+        switch ($string) {
+            case "Strength":
+                return $this->getStrength() >= $otherCard->getStrength();
+                break;
+            case "FearFactor":
+                return $this->getFearFactor() >= $otherCard->getFearFactor();
+                break;
+            case "Magic":
+                return $this->getMagic() >= $otherCard->getMagic();
+                break;
+            case "Rage":
+                return $this->getRage() >= $otherCard->getRage();
+                break;
+            case "Alchemy":
+                return $this->getAlchemy() >= $otherCard->getAlchemy();
+                break;
+            case "Stealth":
+                return $this->getStealth() >= $otherCard->getStealth();
+                break;
+        }
+    }
 }

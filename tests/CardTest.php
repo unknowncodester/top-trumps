@@ -34,6 +34,22 @@ class CardTest extends PHPUnit_Framework_TestCase
         $this->assertEquals($this->card->getAlchemy(), 8);
         $this->assertEquals($this->card->getStealth(), 1);
     }
+
+    /**
+     * @test
+     */
+    public function getWinningCard()
+    {
+        $cardOne = new Card('Faggot', 2, 4, 3, 5, 5, 1);
+        $cardTwo = new Card('Wimp', 3, 0, 2, 0, 4, 8);
+        $this->assertFalse($cardOne->compareTo($cardTwo, 'Strength'));
+        $this->assertTrue($cardOne->compareTo($cardTwo, 'FearFactor'));
+        $this->assertTrue($cardOne->compareTo($cardTwo, 'Magic'));
+        $this->assertTrue($cardOne->compareTo($cardTwo, 'Rage'));
+        $this->assertTrue($cardOne->compareTo($cardTwo, 'Alchemy'));
+        $this->assertFalse($cardOne->compareTo($cardTwo, 'Stealth'));
+    }
+
 }
 
 ?>
