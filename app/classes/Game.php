@@ -24,5 +24,23 @@ class Game
     {
         $cards = $this->dealer->getCards();
         $this->dealer->dealCards($this->botOne, $this->botTwo, $cards);
+
+//        while($this->playersHaveCards()){
+//
+//            $stat = $this->botOne->takeTurn();
+//            $botOneCard = $this->botOne->getCard();
+//            $botTwoCard = $this->botTwo->getCard();
+//            if($botOneCard->compareTo($botTwoCard, $stat));
+//        }
+    }
+
+    /**
+     * @return bool
+     */
+    private function playersHaveCards()
+    {
+        if (count($this->botOne->cardDeck) == 0 || count($this->botTwo->cardDeck) == 0) {
+            return false;
+        }
     }
 }
