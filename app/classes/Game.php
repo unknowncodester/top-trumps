@@ -103,7 +103,7 @@ class Game
 
     private function announceWinner()
     {
-        if (count($this->botOne->cardDeck) === 0) {
+        if (count($this->botTwo->cardDeck) === 0) {
             echo "Player One Wins";
         }
 
