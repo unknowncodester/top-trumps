@@ -41,7 +41,7 @@ class Game
         $botOneCard = $this->botOne->getCard();
         $botTwoCard = $this->botTwo->getCard();
 
-        $this->announcePlayersMove($botOneCard, $stat, $botTwoCard);
+        $this->announcePlayersMove($botOneCard, $botTwoCard, $stat);
         $this->findWinner($botOneCard, $botTwoCard, $stat);
         $this->announceCardSize();
     }
@@ -54,16 +54,12 @@ class Game
 
     private function announceNewGame()
     {
-        echo "-------------Top Trumps---------- Bot v Bot edition".PHP_EOL;
-        sleep(1);
         echo "Dealing cards.......".PHP_EOL;
-        sleep(1);
     }
 
     private function announceNewRound()
     {
         echo "Round Begins...".PHP_EOL;
-        sleep(1);
     }
 
     /**
@@ -71,11 +67,10 @@ class Game
      * @param $stat
      * @param $botTwoCard
      */
-    private function announcePlayersMove($botOneCard, $stat, $botTwoCard)
+    private function announcePlayersMove($botOneCard, $botTwoCard, $stat)
     {
-        echo "Player One playing card " . $botOneCard->getName() . " stat " . $stat . PHP_EOL;
-        echo "Player Two reveals card " . $botTwoCard->getName() . PHP_EOL;
-        sleep(1);
+        echo "Player One playing card " . $botOneCard. " stat " . $stat . PHP_EOL;
+        echo "Player Two reveals card " . $botTwoCard . PHP_EOL;
     }
 
     /**
@@ -100,7 +95,6 @@ class Game
     {
         echo "Player one has ".count($this->botOne->cardDeck)." cards remaining".PHP_EOL;;
         echo "Player two has ".count($this->botTwo->cardDeck)." cards remaining".PHP_EOL;;
-        sleep(1);
     }
 
     private function announceWinner()

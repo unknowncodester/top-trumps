@@ -88,4 +88,15 @@ class Card
                 return $this->getStealth() >= $otherCard->getStealth();
         }
     }
+
+    public function __toString()
+    {
+        return "Card ".$this->getName().
+            " Stats: Str=".$this->getStrength().
+            " Stl=".$this->getStealth().
+            " Fea=".$this->getFearFactor().
+            " Mag=".$this->getMagic().
+            " Rag=".$this->getRage().
+            " Alc=".$this->getAlchemy();
+    }
 }
