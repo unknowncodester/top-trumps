@@ -7,7 +7,9 @@ class GameTest extends PHPUnit_Framework_TestCase
 
     public function setUp()
     {
+        ob_start();
         $this->game = new Game();
+        ob_end_clean();
     }
 
     /**
