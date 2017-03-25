@@ -86,11 +86,13 @@ class Game
     private function findWinner($botOneCard, $botTwoCard, $stat)
     {
         if ($botOneCard->compareTo($botTwoCard, $stat)) {
+            echo "player one wins the round".PHP_EOL;
             $this->botOne->collectCard($botOneCard);
             $this->botOne->collectCard($botTwoCard);
         } else {
-            $this->botTwo->collectCard($botOneCard);
+            echo "player two wins the round".PHP_EOL;
             $this->botTwo->collectCard($botTwoCard);
+            $this->botTwo->collectCard($botOneCard);
         }
     }
 
@@ -105,9 +107,9 @@ class Game
     {
         if (count($this->botTwo->cardDeck) === 0) {
             echo "Player One Wins";
+        }else{
+            echo "Player Two Wins";
         }
-
-        echo "Player Two Wins";
     }
 
     private function runGame()
