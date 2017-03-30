@@ -1,11 +1,5 @@
 <?php
 
-/**
- * Created by PhpStorm.
- * User: dan
- * Date: 16/03/17
- * Time: 10:19
- */
 class Card
 {
     protected $name;

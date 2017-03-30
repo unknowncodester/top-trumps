@@ -1,11 +1,5 @@
 <?php
 
-/**
- * Created by PhpStorm.
- * User: dan
- * Date: 21/03/17
- * Time: 21:21
- */
 class Game
 {
     public $botOne;
@@ -15,9 +9,9 @@ class Game
 
     public function __construct()
     {
-        $this->botOne = new Bot('Barry');
-        $this->botTwo = new Bot('Rachel');
-        $this->dealer = new Dealer();
+        $this->botOne     = new Bot('Barry');
+        $this->botTwo     = new Bot('Rachel');
+        $this->dealer     = new Dealer();
         $this->gameDialog = new GameDialog();
         $this->initGame();
         $this->runGame();

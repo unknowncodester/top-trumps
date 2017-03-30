@@ -1,11 +1,5 @@
 <?php
 
-/**
- * Created by PhpStorm.
- * User: dan
- * Date: 30/03/17
- * Time: 21:46
- */
 class GameDialog
 {
     public function announceNewGame()

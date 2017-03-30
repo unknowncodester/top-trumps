@@ -35,12 +35,12 @@ class Bot
         $card = current($this->cardDeck);
 
         $stats = [
-            "Alchemy" => $card->getAlchemy(),
-            "Fear Factor" => $card->getFearFactor(),
-            "Magic" => $card->getMagic(),
-            "Rage" => $card->getRage(),
-            "Stealth" => $card->getStealth(),
-            "Strength" =>$card->getStrength()
+            'Alchemy' => $card->getAlchemy(),
+            'Fear Factor' => $card->getFearFactor(),
+            'Magic' => $card->getMagic(),
+            'Rage' => $card->getRage(),
+            'Stealth' => $card->getStealth(),
+            'Strength' =>$card->getStrength()
         ];
 
         arsort($stats);
