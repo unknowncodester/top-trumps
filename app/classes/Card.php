@@ -18,13 +18,13 @@ class Card
 
     public function __construct($name, $strength, $fearFactor, $magic, $rage, $alchemy, $stealth)
     {
-        $this->name = $name;
-        $this->strength = $strength;
+        $this->name       = $name;
+        $this->strength   = $strength;
         $this->fearFactor = $fearFactor;
-        $this->magic = $magic;
-        $this->rage = $rage;
-        $this->alchemy = $alchemy;
-        $this->stealth = $stealth;
+        $this->magic      = $magic;
+        $this->rage       = $rage;
+        $this->alchemy    = $alchemy;
+        $this->stealth    = $stealth;
     }
 
     public function getName()
@@ -74,29 +74,29 @@ class Card
     public function compareTo(Card $otherCard, $string)
     {
         switch ($string) {
-            case "Strength":
+            case 'Strength':
                 return $this->getStrength() >= $otherCard->getStrength();
-            case "FearFactor":
+            case 'FearFactor':
                 return $this->getFearFactor() >= $otherCard->getFearFactor();
-            case "Magic":
+            case 'Magic':
                 return $this->getMagic() >= $otherCard->getMagic();
-            case "Rage":
+            case 'Rage':
                 return $this->getRage() >= $otherCard->getRage();
-            case "Alchemy":
+            case 'Alchemy':
                 return $this->getAlchemy() >= $otherCard->getAlchemy();
-            case "Stealth":
+            case 'Stealth':
                 return $this->getStealth() >= $otherCard->getStealth();
         }
     }
 
     public function __toString()
     {
-        return "Card ".$this->getName().
-            " Stats: Str=".$this->getStrength().
-            " Stl=".$this->getStealth().
-            " Fea=".$this->getFearFactor().
-            " Mag=".$this->getMagic().
-            " Rag=".$this->getRage().
-            " Alc=".$this->getAlchemy();
+        return 'Card '.$this->getName().
+            ' Stats: Str='.$this->getStrength().
+            ' Stl='.$this->getStealth().
+            ' Fea='.$this->getFearFactor().
+            ' Mag='.$this->getMagic().
+            ' Rag='.$this->getRage().
+            ' Alc='.$this->getAlchemy();
     }
 }

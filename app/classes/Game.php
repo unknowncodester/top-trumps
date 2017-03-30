@@ -14,8 +14,8 @@ class Game
 
     public function __construct()
     {
-        $this->botOne = new Bot("Barry");
-        $this->botTwo = new Bot("Rachel");
+        $this->botOne = new Bot('Barry');
+        $this->botTwo = new Bot('Rachel');
         $this->dealer = new Dealer();
         $this->initGame();
         $this->runGame();
@@ -25,6 +25,17 @@ class Game
     {
         $this->announceNewGame();
         $this->dealCards();
+    }
+
+    private function runGame()
+    {
+        while ($this->playersHaveCards()) {
+
+            $this->announceNewRound();
+            $this->takeTurn();
+        }
+
+        $this->announceWinner();
     }
 
     /**
@@ -37,7 +48,7 @@ class Game
 
     private function takeTurn()
     {
-        $stat = $this->botOne->takeTurn();
+        $stat       = $this->botOne->takeTurn();
         $botOneCard = $this->botOne->getCard();
         $botTwoCard = $this->botTwo->getCard();
 
@@ -54,12 +65,12 @@ class Game
 
     private function announceNewGame()
     {
-        echo "Dealing cards.......".PHP_EOL;
+        echo 'Dealing cards.......'.PHP_EOL;
     }
 
     private function announceNewRound()
     {
-        echo "Round Begins...".PHP_EOL;
+        echo 'Round Begins...'.PHP_EOL;
     }
 
     /**
@@ -69,8 +80,8 @@ class Game
      */
     private function announcePlayersMove($botOneCard, $botTwoCard, $stat)
     {
-        echo "Player One playing card " . $botOneCard. " stat " . $stat . PHP_EOL;
-        echo "Player Two reveals card " . $botTwoCard . PHP_EOL;
+        echo 'Player One playing card ' . $botOneCard. ' stat ' . $stat . PHP_EOL;
+        echo 'Player Two reveals card ' . $botTwoCard . PHP_EOL;
     }
 
     /**
@@ -81,11 +92,11 @@ class Game
     private function findWinner($botOneCard, $botTwoCard, $stat)
     {
         if ($botOneCard->compareTo($botTwoCard, $stat)) {
-            echo "player one wins the round".PHP_EOL;
+            echo 'player one wins the round'.PHP_EOL;
             $this->botOne->collectCard($botOneCard);
             $this->botOne->collectCard($botTwoCard);
         } else {
-            echo "player two wins the round".PHP_EOL;
+            echo 'player two wins the round'.PHP_EOL;
             $this->botTwo->collectCard($botTwoCard);
             $this->botTwo->collectCard($botOneCard);
         }
@@ -93,27 +104,16 @@ class Game
 
     private function announceCardSize()
     {
-        echo "Player one has ".count($this->botOne->cardDeck)." cards remaining".PHP_EOL;;
-        echo "Player two has ".count($this->botTwo->cardDeck)." cards remaining".PHP_EOL;;
+        echo 'Player one has '.count($this->botOne->cardDeck).' cards remaining'.PHP_EOL;;
+        echo 'Player two has '.count($this->botTwo->cardDeck).' cards remaining'.PHP_EOL;;
     }
 
     private function announceWinner()
     {
         if (count($this->botTwo->cardDeck) === 0) {
-            echo "Player One Wins";
+            echo 'Player One Wins';
         }else{
-            echo "Player Two Wins";
+            echo 'Player Two Wins';
         }
-    }
-
-    private function runGame()
-    {
-        while ($this->playersHaveCards()) {
-
-            $this->announceNewRound();
-            $this->takeTurn();
-        }
-
-        $this->announceWinner();
     }
 }

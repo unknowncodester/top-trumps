@@ -28,7 +28,9 @@ class Dealer
 
     public function dealCards(Bot $botOne, Bot $botTwo, $cards)
     {
-        for($i = 0; $i < count($cards); $i++){
+        $amountOfCards = count($cards);
+
+        for($i = 0; $i < $amountOfCards; $i++){
             if($i == 0){
                 $botOne->collectCard($cards[$i]);
             }elseif($i % 2 == 0){
