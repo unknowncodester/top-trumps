@@ -80,8 +80,8 @@ class Game
      */
     private function announcePlayersMove($botOneCard, $botTwoCard, $stat)
     {
-        echo 'Player One playing card ' . $botOneCard. ' stat ' . $stat . PHP_EOL;
-        echo 'Player Two reveals card ' . $botTwoCard . PHP_EOL;
+        echo 'Player One playing card '.$botOneCard.' stat '.$stat.PHP_EOL;
+        echo 'Player Two reveals card '.$botTwoCard.PHP_EOL;
     }
 
     /**
@@ -104,15 +104,15 @@ class Game
 
     private function announceCardSize()
     {
-        echo 'Player one has '.count($this->botOne->cardDeck).' cards remaining'.PHP_EOL;;
-        echo 'Player two has '.count($this->botTwo->cardDeck).' cards remaining'.PHP_EOL;;
+        echo 'Player one has '.count($this->botOne->cardDeck).' cards remaining'.PHP_EOL; ;
+        echo 'Player two has '.count($this->botTwo->cardDeck).' cards remaining'.PHP_EOL; ;
     }
 
     private function announceWinner()
     {
         if (count($this->botTwo->cardDeck) === 0) {
             echo 'Player One Wins';
-        }else{
+        } else {
             echo 'Player Two Wins';
         }
     }
