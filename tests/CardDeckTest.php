@@ -36,8 +36,9 @@ class CardDeckTest extends PHPUnit_Framework_TestCase
      */
     public function canTakeACardOffTheDeck()
     {
+        $initialDeckSize = count($this->cardDeck->getCards());
         $this->cardDeck->removeCard();
-        $this->assertEquals(9, count($this->cardDeck->getCards()));
+        $this->assertEquals($initialDeckSize - 1, count($this->cardDeck->getCards()));
     }
 
     /**
@@ -45,8 +46,9 @@ class CardDeckTest extends PHPUnit_Framework_TestCase
      */
     public function canTakeManyCardsOffTheDeck()
     {
+        $initialDeckSize = count($this->cardDeck->getCards());
         $this->cardDeck->removeCard();
         $this->cardDeck->removeCard();
-        $this->assertEquals(8, count($this->cardDeck->getCards()));
+        $this->assertEquals($initialDeckSize - 2, count($this->cardDeck->getCards()));
     }
 }
