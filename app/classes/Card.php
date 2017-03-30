@@ -16,6 +16,15 @@ class Card
     protected $alchemy;
     protected $stealth;
 
+    /**
+     * @param string $name
+     * @param integer $strength
+     * @param integer $fearFactor
+     * @param integer $magic
+     * @param integer $rage
+     * @param integer $alchemy
+     * @param integer $stealth
+     */
     public function __construct($name, $strength, $fearFactor, $magic, $rage, $alchemy, $stealth)
     {
         $this->name       = $name;
@@ -69,7 +78,7 @@ class Card
      *
      * @param Card $otherCard - the card to compare against
      * @param $string - name of the stat to compare
-     * @return bool
+     * @return boolean|null
      */
     public function compareTo(Card $otherCard, $string)
     {
