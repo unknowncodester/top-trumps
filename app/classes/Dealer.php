@@ -15,7 +15,7 @@ class Dealer
         $this->cardDeck = new CardDeck();
     }
 
-    public function getCards(){
+    public function getCards() {
         $cards = $this->cardDeck->getCards();
         return $this->shuffleCards($cards);
     }
@@ -30,12 +30,12 @@ class Dealer
     {
         $amountOfCards = count($cards);
 
-        for($i = 0; $i < $amountOfCards; $i++){
-            if($i == 0){
+        for ($i = 0; $i < $amountOfCards; $i++) {
+            if ($i == 0) {
                 $botOne->collectCard($cards[$i]);
-            }elseif($i % 2 == 0){
+            }elseif ($i % 2 == 0) {
                 $botOne->collectCard($cards[$i]);
-            }else{
+            } else {
                 $botTwo->collectCard($cards[$i]);
             }
         }
