@@ -42,6 +42,6 @@ class GameTest extends PHPUnit_Framework_TestCase
      */
     public function RoundWinnerIsSaved()
     {
-        $this->assertInstanceOf(Dealer::class, $this->game->dealer);
+
     }
 }
