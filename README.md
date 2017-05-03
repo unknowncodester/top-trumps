@@ -27,3 +27,15 @@ This app is just some code I wrote to learn TDD, practice OOP and the Continous 
 * 3 player games
 
 ### How do I get set up? ###
+
+1. Clone repo;
+    * git clone https://github.com/unknowncodester/top-trumps.git
+
+2. Install dependancies for the project;
+   * cd top-trumps && composer install
+
+3. Run the game
+   * php index.php
+   
+4. Run the tests
+   * ./vendor/bin/phpunit
