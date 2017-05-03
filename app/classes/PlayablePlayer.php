@@ -4,6 +4,9 @@ class PlayablePlayer
 {
     public $cardDeck = [];
 
+    /**
+     * @param string $name
+     */
     public function __construct($name)
     {
         $this->name = $name;
@@ -27,23 +30,23 @@ class PlayablePlayer
     public function takeTurn()
     {
         echo(current($this->cardDeck).PHP_EOL);
-        $handle = fopen ("php://stdin","r");
+        $handle = fopen("php://stdin", "r");
         $line = fgets($handle);
         $move = trim($line);
 
-        if($move === "Alchemy"){
+        if ($move === "Alchemy") {
             return "Alchemy";
-        }elseif($move === "Fear Factor"){
+        }elseif ($move === "Fear Factor") {
             return "Fear Factor";
-        }elseif($move === "Magic"){
+        }elseif ($move === "Magic") {
             return "Magic";
-        }elseif($move === "Rage"){
+        }elseif ($move === "Rage") {
             return "Rage";
-        }elseif($move === "Stealth"){
+        }elseif ($move === "Stealth") {
             return "Stealth";
-        }elseif($move === "Strength"){
+        }elseif ($move === "Strength") {
             return "Strength";
-        }else{
+        } else {
             return "Strength";
         }
     }
