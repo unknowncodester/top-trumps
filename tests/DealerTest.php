@@ -37,13 +37,13 @@ class DealerTest extends PHPUnit_Framework_TestCase
      * @param $expectedBotOneCardCount
      * @param $expectedBotTwoCardCount
      */
-    public function dealsCardFairly($cards, $expectedBotOneCardCount, $expectedBotTwoCardCount)
+    public function dealsCardFairly($cards, $expectedBotOneCardCount, $expectedPlayerOneCardCount)
     {
         $botOne = new Bot('bot one');
-        $botTwo = new Bot('bot two');
-        $this->dealer->dealCards($botOne, $botTwo, $cards);
+        $playerOne = new PlayablePlayer('PlayerOne');
+        $this->dealer->dealCards($botOne, $playerOne, $cards);
         $this->assertEquals($expectedBotOneCardCount, count($botOne->cardDeck));
-        $this->assertEquals($expectedBotTwoCardCount, count($botTwo->cardDeck));
+        $this->assertEquals($expectedPlayerOneCardCount, count($playerOne->cardDeck));
     }
 
 

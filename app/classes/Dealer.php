@@ -20,7 +20,7 @@ class Dealer
         return $cards;
     }
 
-    public function dealCards(Bot $botOne, Bot $botTwo, $cards)
+    public function dealCards(Bot $botOne, PlayablePlayer $playerOne, $cards)
     {
         $amountOfCards = count($cards);
 
@@ -30,7 +30,7 @@ class Dealer
             }elseif ($i % 2 == 0) {
                 $botOne->collectCard($cards[$i]);
             } else {
-                $botTwo->collectCard($cards[$i]);
+                $playerOne->collectCard($cards[$i]);
             }
         }
     }

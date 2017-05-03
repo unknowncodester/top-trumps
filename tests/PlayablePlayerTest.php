@@ -55,5 +55,13 @@ class PlayablePlayerTest extends PHPUnit_Framework_TestCase
         $card = $this->playablePlayer->getCard();
         $this->assertInstanceOf(Card::class, $card);
     }
+
+    /**
+     * @test
+     */
+    public function canTakeATurn()
+    {
+        $this->playablePlayer->takeTurn();
+    }
 }
 ?>
