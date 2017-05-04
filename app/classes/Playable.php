@@ -1,29 +1,7 @@
 <?php
 
-class PlayablePlayer
+class Playable extends Player
 {
-    public $cardDeck = [];
-
-    public function __construct($name)
-    {
-        $this->name = $name;
-    }
-
-    public function getName()
-    {
-        return $this->name;
-    }
-
-    public function collectCard(Card $card)
-    {
-        $this->cardDeck[] = $card;
-    }
-
-    public function getCard()
-    {
-        return array_shift($this->cardDeck);
-    }
-
     public function takeTurn()
     {
         echo(current($this->cardDeck).PHP_EOL);

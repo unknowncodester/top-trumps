@@ -1,12 +1,12 @@
 <?php
 
-class PlayablePlayerTest extends PHPUnit_Framework_TestCase
+class PlayableTest extends PHPUnit_Framework_TestCase
 {
     protected $playablePlayer;
 
     public function setUp()
     {
-        $this->playablePlayer = new PlayablePlayer('Player 1');
+        $this->playablePlayer = new Playable('Player 1');
     }
 
     /**
@@ -14,7 +14,7 @@ class PlayablePlayerTest extends PHPUnit_Framework_TestCase
      */
     public function canBeCreated()
     {
-        $this->assertInstanceOf(PlayablePlayer::class, $this->playablePlayer);
+        $this->assertInstanceOf(Playable::class, $this->playablePlayer);
     }
 
     /**

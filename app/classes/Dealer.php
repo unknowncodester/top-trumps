@@ -20,7 +20,7 @@ class Dealer
         return $cards;
     }
 
-    public function dealCards(Bot $botOne, PlayablePlayer $playerOne, $cards)
+    public function dealCards(Bot $botOne, Playable $playerOne, $cards)
     {
         $amountOfCards = count($cards);
 

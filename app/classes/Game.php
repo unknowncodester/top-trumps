@@ -10,7 +10,7 @@ class Game
     public function __construct()
     {
         $this->botOne     = new Bot('Barry');
-        $this->playerOne  = new PlayablePlayer('Danny');
+        $this->playerOne  = new Playable('Danny');
         $this->dealer     = new Dealer();
         $this->gameDialog = new GameDialog();
         $this->initGame();
