@@ -23,7 +23,7 @@ class GameTest extends PHPUnit_Framework_TestCase
         $game = new Game(new Bot('name'), new Bot('name'));
         $this->assertInstanceOf(Game::class, $game);
         $this->assertInstanceOf(Bot::class, $game->playerOne);
-        $this->assertInstanceOf(Playable::class, $game->playerTwo);
+        $this->assertInstanceOf(Bot::class, $game->playerTwo);
     }
 
     /**

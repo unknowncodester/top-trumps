@@ -4,6 +4,7 @@ class Playable extends Player
 {
     public function takeTurn()
     {
+        echo(current($this->cardDeck).PHP_EOL);
         $moves = [
             'Alchemy',
             'Fear Factor',
