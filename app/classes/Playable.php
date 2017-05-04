@@ -4,25 +4,25 @@ class Playable extends Player
 {
     public function takeTurn()
     {
-        echo(current($this->cardDeck).PHP_EOL);
+        $moves = [
+            'Alchemy',
+            'Fear Factor',
+            'Magic',
+            'Rage',
+            'Stealth',
+            'Strength'
+        ];
         $handle = fopen("php://stdin", "r");
-        $line = fgets($handle);
-        $move = trim($line);
 
-        if ($move === "Alchemy") {
-            return "Alchemy";
-        }elseif ($move === "Fear Factor") {
-            return "Fear Factor";
-        }elseif ($move === "Magic") {
-            return "Magic";
-        }elseif ($move === "Rage") {
-            return "Rage";
-        }elseif ($move === "Stealth") {
-            return "Stealth";
-        }elseif ($move === "Strength") {
-            return "Strength";
-        } else {
-            return "Strength";
+        while(1){
+
+            $line = fgets($handle);
+            $move = trim($line);
+
+            if (in_array($move, $moves))
+            {
+                return $move;
+            }
         }
     }
 }
