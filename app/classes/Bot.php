@@ -4,11 +4,6 @@ class Bot extends Player
 {
     public function takeTurn()
     {
-        return $this->getHighestStat();
-    }
-
-    private function getHighestStat()
-    {
         $card = current($this->cardDeck);
 
         $stats = [
