@@ -48,7 +48,7 @@ class CardDeck
             new Card('Geralt', 10, 12, 10, 7, 5, 4)
         ];
 
-        foreach ($cards as $card){
+        foreach ($cards as $card) {
             $this->addCard($card);
         }
     }
