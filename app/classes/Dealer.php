@@ -20,17 +20,17 @@ class Dealer
         return $cards;
     }
 
-    public function dealCards(Bot $botOne, Playable $playerOne, $cards)
+    public function dealCards(Player $playerOne, Player $playerTwo, $cards)
     {
         $amountOfCards = count($cards);
 
         for ($i = 0; $i < $amountOfCards; $i++) {
             if ($i == 0) {
-                $botOne->collectCard($cards[$i]);
-            } elseif ($i % 2 == 0) {
-                $botOne->collectCard($cards[$i]);
-            } else {
                 $playerOne->collectCard($cards[$i]);
+            } elseif ($i % 2 == 0) {
+                $playerOne->collectCard($cards[$i]);
+            } else {
+                $playerTwo->collectCard($cards[$i]);
             }
         }
     }
