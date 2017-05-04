@@ -8,25 +8,33 @@ class GameTest extends PHPUnit_Framework_TestCase
     public function setUp()
     {
         ob_start();
-        $this->game = new Game();
+    }
+
+    public function tearDown()
+    {
         ob_end_clean();
     }
 
     /**
      * @test
      */
-    public function canCreateAGame()
+    public function canCreateAGameWithBots()
     {
-        $this->assertInstanceOf(Game::class, $this->game);
+        $game = new Game(new Bot('name'), new Bot('name'));
+        $this->assertInstanceOf(Game::class, $game);
+        $this->assertInstanceOf(Bot::class, $game->playerOne);
+        $this->assertInstanceOf(Bot::class, $game->playerTwo);
     }
 
     /**
      * @test
      */
-    public function newGameHasTwoBots()
+    public function canCreateAGameWithPlayerAndBot()
     {
-        $this->assertInstanceOf(Bot::class, $this->game->botOne);
-        $this->assertInstanceOf(Bot::class, $this->game->botTwo);
+        $game = new Game(new Bot('name'), new Playable('name'));
+        $this->assertInstanceOf(Game::class, $game);
+        $this->assertInstanceOf(Bot::class, $game->playerOne);
+        $this->assertInstanceOf(Player::class, $game->playerTwo);
     }
 
     /**
@@ -34,6 +42,7 @@ class GameTest extends PHPUnit_Framework_TestCase
      */
     public function newGameHasADealer()
     {
-        $this->assertInstanceOf(Dealer::class, $this->game->dealer);
+        $game = new Game(new Bot('name'), new Bot('name'));
+        $this->assertInstanceOf(Dealer::class, $game->dealer);
     }
 }

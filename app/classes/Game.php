@@ -1,14 +1,15 @@
 <?php
 class Game
 {
-    public $botOne;
-    public $botTwo;
+    public $playerOne;
+    public $playerTwo;
     public $dealer;
     public $gameDialog;
-    public function __construct()
+
+    public function __construct(Player $playerOne, Player $playerTwo)
     {
-        $this->botOne     = new Bot('Barry');
-        $this->botTwo     = new Bot('Rachel');
+        $this->playerOne  = $playerOne;
+        $this->playerTwo  = $playerTwo;
         $this->dealer     = new Dealer();
         $this->gameDialog = new GameDialog();
         $this->initGame();
@@ -25,48 +26,43 @@ class Game
             $this->gameDialog->announceNewRound();
             $this->takeTurn();
         }
-        if (count($this->botOne->cardDeck) > 0) {
-            $this->gameDialog->announceGameWinner($this->botOne->getName());
+        if (count($this->playerOne->cardDeck) > 0) {
+            $this->gameDialog->announceGameWinner($this->playerOne->getName());
         } else {
-            $this->gameDialog->announceGameWinner($this->botTwo->getName());
+            $this->gameDialog->announceGameWinner($this->playerTwo->getName());
         }
     }
-    /**
-     * @return bool
-     */
+
     private function playersHaveCards()
     {
-        return count($this->botOne->cardDeck) > 0 && count($this->botTwo->cardDeck) > 0;
+        return count($this->playerOne->cardDeck) > 0 && count($this->playerTwo->cardDeck) > 0;
     }
+
     private function takeTurn()
     {
-        $stat       = $this->botOne->takeTurn();
-        $botOneCard = $this->botOne->getCard();
-        $botTwoCard = $this->botTwo->getCard();
-        $this->gameDialog->announcePlayersMove($botOneCard, $botTwoCard, $stat);
-        $this->findRoundWinner($botOneCard, $botTwoCard, $stat);
-        $this->gameDialog->announceCardSize($this->botOne->cardDeck, $this->botTwo->cardDeck);
+        $stat       = $this->playerOne->takeTurn();
+        $playerOneCard = $this->playerOne->getCard();
+        $playerTwoCard = $this->playerTwo->getCard();
+        $this->gameDialog->announcePlayersMove($playerOneCard, $playerTwoCard, $stat);
+        $this->findRoundWinner($playerOneCard, $playerTwoCard, $stat);
+        $this->gameDialog->announceCardSize($this->playerOne->cardDeck, $this->playerTwo->cardDeck);
     }
     private function dealCards()
     {
         $cards = $this->dealer->getCards();
-        $this->dealer->dealCards($this->botOne, $this->botTwo, $cards);
+        $this->dealer->dealCards($this->playerOne, $this->playerTwo, $cards);
     }
-    /**
-     * @param $botOneCard
-     * @param $botTwoCard
-     * @param $stat
-     */
-    private function findRoundWinner($botOneCard, $botTwoCard, $stat)
+
+    private function findRoundWinner($playerOneCard, $playerTwoCard, $stat)
     {
-        if ($botOneCard->compareTo($botTwoCard, $stat)) {
+        if ($playerOneCard->compareTo($playerTwoCard, $stat)) {
             echo 'player one wins the round'.PHP_EOL;
-            $this->botOne->collectCard($botOneCard);
-            $this->botOne->collectCard($botTwoCard);
+            $this->playerOne->collectCard($playerOneCard);
+            $this->playerOne->collectCard($playerTwoCard);
         } else {
             echo 'player two wins the round'.PHP_EOL;
-            $this->botTwo->collectCard($botTwoCard);
-            $this->botTwo->collectCard($botOneCard);
+            $this->playerTwo->collectCard($playerTwoCard);
+            $this->playerTwo->collectCard($playerOneCard);
         }
     }
 }
