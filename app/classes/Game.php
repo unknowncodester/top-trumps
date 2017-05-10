@@ -5,6 +5,7 @@ class Game
     public $playerTwo;
     public $dealer;
     public $gameDialog;
+    public $round;
 
     public function __construct(Player $playerOne, Player $playerTwo)
     {
@@ -12,6 +13,7 @@ class Game
         $this->playerTwo  = $playerTwo;
         $this->dealer     = new Dealer();
         $this->gameDialog = new GameDialog();
+        $this->round = new Round();
         $this->initGame();
         $this->runGame();
     }
@@ -40,9 +42,16 @@ class Game
 
     private function takeTurn()
     {
-        $stat       = $this->playerOne->takeTurn();
-        $playerOneCard = $this->playerOne->getCard();
-        $playerTwoCard = $this->playerTwo->getCard();
+        $winnerOfLastRound = $this->round->getRoundWinner();
+
+        if(empty($winnerOfLastRound)){
+            $stat          = $this->playerOne->takeTurn();
+        }else{
+            $stat          = $this->{$winnerOfLastRound}->takeTurn();
+        }
+
+        $playerOneCard     = $this->playerOne->getCard();
+        $playerTwoCard     = $this->playerTwo->getCard();
         $this->gameDialog->announcePlayersMove($playerOneCard, $playerTwoCard, $stat);
         $this->findRoundWinner($playerOneCard, $playerTwoCard, $stat);
         $this->gameDialog->announceCardSize($this->playerOne->cardDeck, $this->playerTwo->cardDeck);
@@ -56,10 +65,12 @@ class Game
     private function findRoundWinner($playerOneCard, $playerTwoCard, $stat)
     {
         if ($playerOneCard->compareTo($playerTwoCard, $stat)) {
+            $this->round->add('playerOne');
             echo 'player one wins the round'.PHP_EOL;
             $this->playerOne->collectCard($playerOneCard);
             $this->playerOne->collectCard($playerTwoCard);
         } else {
+            $this->round->add('playerTwo');
             echo 'player two wins the round'.PHP_EOL;
             $this->playerTwo->collectCard($playerTwoCard);
             $this->playerTwo->collectCard($playerOneCard);
