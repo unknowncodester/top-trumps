@@ -9,7 +9,7 @@ class Playable extends Player
         echo(current($this->cardDeck).PHP_EOL);
         $moves = [
             'Alchemy',
-            'Fear Factor',
+            'Intelligence',
             'Magic',
             'Rage',
             'Stealth',

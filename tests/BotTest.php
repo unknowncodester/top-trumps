@@ -54,7 +54,7 @@ class BotTest extends PHPUnit_Framework_TestCase
             ],
             [
                 new Card("Voldermort", 9, 20, 15, 15, 12, 2),
-                "Fear Factor"
+                "Intelligence"
             ],
             [
                 new Card("Merlin", 10, 6, 14, 3, 5, 4),

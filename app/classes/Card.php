@@ -4,26 +4,27 @@ class Card
 {
     protected $name;
     protected $strength;
-    protected $fearFactor;
+    protected $intelligence;
     protected $magic;
     protected $rage;
     protected $alchemy;
     protected $stealth;
 
     /**
-     * @param string $name
-     * @param integer $strength
-     * @param integer $fearFactor
-     * @param integer $magic
-     * @param integer $rage
-     * @param integer $alchemy
-     * @param integer $stealth
+     * Card constructor.
+     * @param $name
+     * @param $strength
+     * @param $intelligence
+     * @param $magic
+     * @param $rage
+     * @param $alchemy
+     * @param $stealth
      */
-    public function __construct($name, $strength, $fearFactor, $magic, $rage, $alchemy, $stealth)
+    public function __construct($name, $strength, $intelligence, $magic, $rage, $alchemy, $stealth)
     {
         $this->name       = $name;
         $this->strength   = $strength;
-        $this->fearFactor = $fearFactor;
+        $this->intelligence = $intelligence;
         $this->magic      = $magic;
         $this->rage       = $rage;
         $this->alchemy    = $alchemy;
@@ -40,9 +41,9 @@ class Card
         return $this->strength;
     }
 
-    public function getFearFactor()
+    public function getIntelligence()
     {
-        return $this->fearFactor;
+        return $this->intelligence;
     }
 
     public function getMagic()
@@ -79,8 +80,8 @@ class Card
         switch ($string) {
             case 'Strength':
                 return $this->getStrength() >= $otherCard->getStrength();
-            case 'FearFactor':
-                return $this->getFearFactor() >= $otherCard->getFearFactor();
+            case 'Intelligence':
+                return $this->getIntelligence() >= $otherCard->getIntelligence();
             case 'Magic':
                 return $this->getMagic() >= $otherCard->getMagic();
             case 'Rage':
@@ -94,12 +95,13 @@ class Card
 
     public function __toString()
     {
-        return 'Card '.$this->getName().
-            ' Stats: Str='.$this->getStrength().
-            ' Stl='.$this->getStealth().
-            ' Fea='.$this->getFearFactor().
-            ' Mag='.$this->getMagic().
-            ' Rag='.$this->getRage().
-            ' Alc='.$this->getAlchemy();
+        return 'Card ='.$this->getName().PHP_EOL.
+            'Stats;'.PHP_EOL.
+            'Strength='.$this->getStrength().PHP_EOL.
+            'Stealth='.$this->getStealth().PHP_EOL.
+            'Intelligence='.$this->getIntelligence().PHP_EOL.
+            'Magic='.$this->getMagic().PHP_EOL.
+            'Rage='.$this->getRage().PHP_EOL.
+            'Alchemy='.$this->getAlchemy().PHP_EOL;
     }
 }

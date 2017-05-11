@@ -10,6 +10,7 @@ class GameDialog
     public function announceNewRound()
     {
         echo 'Round Begins...'.PHP_EOL;
+        echo 'Type the name of the stat you wish to use'.PHP_EOL.PHP_EOL;
     }
 
     public function announcePlayersMove($botOneCard, $botTwoCard, $stat)

@@ -8,7 +8,7 @@ class Bot extends Player
 
         $stats = [
             'Alchemy' => $card->getAlchemy(),
-            'Fear Factor' => $card->getFearFactor(),
+            'Intelligence' => $card->getIntelligence(),
             'Magic' => $card->getMagic(),
             'Rage' => $card->getRage(),
             'Stealth' => $card->getStealth(),
