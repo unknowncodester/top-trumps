@@ -31,7 +31,9 @@ class GameTest extends PHPUnit_Framework_TestCase
      */
     public function canCreateAGameWithPlayerAndBot()
     {
-        $game = new Game(new Bot('name'), new Playable('name'));
+        $playablePlayer = new Playable('Human');
+        $playablePlayer->setReadLocation(__DIR__ . "/Fixtures/firstChoice.txt");
+        $game = new Game(new Bot('name'), $playablePlayer);
         $this->assertInstanceOf(Game::class, $game);
         $this->assertInstanceOf(Bot::class, $game->playerOne);
         $this->assertInstanceOf(Player::class, $game->playerTwo);
