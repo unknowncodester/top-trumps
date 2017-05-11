@@ -14,7 +14,7 @@
 
     <filter>
         <whitelist addUncoveredFilesFromWhitelist="true">
-            <directory suffix=".php">src</directory>
+            <directory suffix=".php">app</directory>
         </whitelist>
     </filter>
     <logging>

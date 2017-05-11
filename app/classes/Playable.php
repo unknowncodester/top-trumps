@@ -2,6 +2,8 @@
 
 class Playable extends Player
 {
+    protected $readLocation = "php://stdin";
+
     public function takeTurn()
     {
         echo(current($this->cardDeck).PHP_EOL);
@@ -13,7 +15,7 @@ class Playable extends Player
             'Stealth',
             'Strength'
         ];
-        $handle = fopen("php://stdin", "r");
+        $handle = fopen($this->readLocation, "r");
 
         while(1){
 
@@ -25,5 +27,10 @@ class Playable extends Player
                 return $move;
             }
         }
+    }
+
+    public function setReadLocation($location)
+    {
+        $this->readLocation = $location;
     }
 }
