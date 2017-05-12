@@ -7,6 +7,7 @@ class Playable extends Player
     public function takeTurn()
     {
         echo(current($this->cardDeck).PHP_EOL);
+        echo("Enter the name of a stat above".PHP_EOL);
         $moves = [
             'Alchemy',
             'Intelligence',
@@ -20,7 +21,7 @@ class Playable extends Player
         while(1){
 
             $line = fgets($handle);
-            $move = trim($line);
+            $move = ucfirst (trim($line));
 
             if (in_array($move, $moves))
             {

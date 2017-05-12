@@ -95,7 +95,7 @@ class Card
 
     public function __toString()
     {
-        return 'Card ='.$this->getName().PHP_EOL.
+        return 'Card ='.$this->getName().PHP_EOL.PHP_EOL.
             'Stats;'.PHP_EOL.
             'Strength='.$this->getStrength().PHP_EOL.
             'Stealth='.$this->getStealth().PHP_EOL.
