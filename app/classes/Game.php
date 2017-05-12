@@ -7,12 +7,12 @@ class Game
     public $gameDialog;
     public $round;
 
-    public function __construct(Player $playerOne, Player $playerTwo)
+    public function __construct(Player $playerOne, Player $playerTwo, GameDialog $gameDialog)
     {
         $this->playerOne  = $playerOne;
         $this->playerTwo  = $playerTwo;
+        $this->gameDialog = $gameDialog;
         $this->dealer     = new Dealer();
-        $this->gameDialog = new GameDialog();
         $this->round = new Round();
         $this->initGame();
         $this->runGame();
@@ -54,7 +54,7 @@ class Game
         $playerTwoCard     = $this->playerTwo->getCard();
         $this->gameDialog->announcePlayersMove($playerOneCard, $playerTwoCard, $stat);
         $this->findRoundWinner($playerOneCard, $playerTwoCard, $stat);
-        $this->gameDialog->announceCardSize($this->playerOne->cardDeck, $this->playerTwo->cardDeck);
+        $this->gameDialog->announceCardSize(count($this->playerOne->cardDeck), count($this->playerTwo->cardDeck));
     }
     private function dealCards()
     {
@@ -66,12 +66,12 @@ class Game
     {
         if ($playerOneCard->compareTo($playerTwoCard, $stat)) {
             $this->round->add('playerOne');
-            echo 'player one wins the round'.PHP_EOL;
+            $this->gameDialog->announceRoundWinner($this->playerOne->getName());
             $this->playerOne->collectCard($playerOneCard);
             $this->playerOne->collectCard($playerTwoCard);
         } else {
             $this->round->add('playerTwo');
-            echo 'player two wins the round'.PHP_EOL;
+            $this->gameDialog->announceRoundWinner($this->playerTwo->getName());
             $this->playerTwo->collectCard($playerTwoCard);
             $this->playerTwo->collectCard($playerOneCard);
         }

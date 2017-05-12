@@ -2,7 +2,6 @@
 
 class GameTest extends PHPUnit_Framework_TestCase
 {
-
     public $game;
 
     public function setUp()
@@ -20,7 +19,7 @@ class GameTest extends PHPUnit_Framework_TestCase
      */
     public function canCreateAGameWithBots()
     {
-        $game = new Game(new Bot('name'), new Bot('name'));
+        $game = new Game(new Bot('name'), new Bot('name'), new FastGameDialog());
         $this->assertInstanceOf(Game::class, $game);
         $this->assertInstanceOf(Bot::class, $game->playerOne);
         $this->assertInstanceOf(Bot::class, $game->playerTwo);
@@ -33,7 +32,7 @@ class GameTest extends PHPUnit_Framework_TestCase
     {
         $playablePlayer = new Playable('Human');
         $playablePlayer->setReadLocation(__DIR__ . "/Fixtures/firstChoice.txt");
-        $game = new Game(new Bot('name'), $playablePlayer);
+        $game = new Game(new Bot('name'), $playablePlayer, new FastGameDialog());
         $this->assertInstanceOf(Game::class, $game);
         $this->assertInstanceOf(Bot::class, $game->playerOne);
         $this->assertInstanceOf(Player::class, $game->playerTwo);
@@ -44,7 +43,7 @@ class GameTest extends PHPUnit_Framework_TestCase
      */
     public function newGameHasADealer()
     {
-        $game = new Game(new Bot('name'), new Bot('name'));
+        $game = new Game(new Bot('name'), new Bot('name'), new FastGameDialog());
         $this->assertInstanceOf(Dealer::class, $game->dealer);
     }
 }
