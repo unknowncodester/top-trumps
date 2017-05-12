@@ -20,11 +20,6 @@ This app is just a project I did to practice TDD, OOP and learn the Continous In
 * The new round begins with the winner of the last round
 * The game ends when a players has no cards left
 
-### Possible Future Features ###
-* Different difficulty bots
-* Different packs of cards
-* 3 player games
-
 ### How do I get set up? ###
 
 1. Clone repo;
@@ -38,3 +33,19 @@ This app is just a project I did to practice TDD, OOP and learn the Continous In
    
 4. Run the tests
    * ./vendor/bin/phpunit
+   
+### How do I Play? ###
+* Run the command php index.php from the root folder of this project.
+* When the application runs you need to enter; 
+    * 1 for Player vs Bot game
+    * 2 for a Bot v Bot game
+* After that you need to enter the name of the stat that you think could beat your opponent
+* When the game is finished exit using Ctrl + C
+
+### Possible Future Features / Things to do ###
+* Allow ability to add players name
+* Allow ability to begin a new game (after finishing one)
+* Pause the game in various places so you can see what's happening a bit easier
+* Different difficulty bots
+* Different packs of cards
+* 3 player games
