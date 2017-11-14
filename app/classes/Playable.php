@@ -4,10 +4,18 @@ class Playable extends Player
 {
     protected $readLocation = "php://stdin";
 
+    protected $gameDialog;
+
+    public function __construct($name)
+    {
+        parent::__construct($name);
+        $this->gameDialog = new SlowGameDialog();
+    }
+
     public function takeTurn()
     {
-        echo(current($this->cardDeck).PHP_EOL);
-        echo("Enter the name of a stat above".PHP_EOL);
+        $this->gameDialog->revealCard(current($this->cardDeck));
+
         $moves = [
             'Alchemy',
             'Intelligence',
@@ -23,8 +31,7 @@ class Playable extends Player
             $line = fgets($handle);
             $move = ucfirst (trim($line));
 
-            if (in_array($move, $moves))
-            {
+            if (in_array($move, $moves)) {
                 return $move;
             }
         }

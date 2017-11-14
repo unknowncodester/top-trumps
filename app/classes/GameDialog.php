@@ -1,11 +1,26 @@
 <?php
 
-interface GameDialog
+use League\CLImate\CLImate;
+
+abstract class GameDialog
 {
-    public function announceNewGame();
-    public function announceNewRound();
-    public function announcePlayersMove(Card $botOneCard, Card $botTwoCard, string $stat);
-    public function announceCardSize(int $playerOneCardAmount, int $playerTwoCardAmount);
-    public function announceGameWinner(string $name);
-    public function announceRoundWinner(string $name);
+    /**
+     * @var \League\CLImate\CLImate
+     */
+    protected $cli;
+
+    /**
+     * GameDialog constructor.
+     */
+    public function __construct()
+    {
+        $this->cli =  new CLImate;
+    }
+
+    abstract public function announceNewGame();
+    abstract public function announceNewRound();
+    abstract public function announcePlayersMove(Card $botOneCard, Card $botTwoCard, string $stat);
+    abstract public function announceCardSize(int $playerOneCardAmount, int $playerTwoCardAmount);
+    abstract public function announceGameWinner(string $name);
+    abstract public function announceRoundWinner(string $name);
 }

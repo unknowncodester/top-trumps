@@ -1,6 +1,6 @@
 <?php
 
-class FastGameDialog implements GameDialog
+class FastGameDialog extends GameDialog
 {
     public function announceNewGame()
     {
