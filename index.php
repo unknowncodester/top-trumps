@@ -22,7 +22,7 @@ while(1){
     }
 
     if($gameMode == "2"){
-        new Game(new Bot($playerOneName), new Bot($playerTwoName), new BotGameDialog());
+        new Game(new Bot($playerOneName), new Bot($playerTwoName), new FastGameDialog());
     }
 }
 
