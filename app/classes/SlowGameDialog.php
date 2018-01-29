@@ -48,7 +48,6 @@ class SlowGameDialog extends GameDialog
         ];
 
         $this->cli->table($cardStats);
-        $this->cli->flank('Please enter a stat from the above');
     }
 
     public function announcePlayersMove(Card $playerOneCard, Card $playerTwoCard, string $stat)
@@ -154,5 +153,20 @@ class SlowGameDialog extends GameDialog
         sleep(1);
         $this->cli->flank($playerName.' Wins The Game!');
         sleep(1);
+    }
+
+    public function takeTurn()
+    {
+        $moves = [
+            'Alchemy',
+            'Intelligence',
+            'Magic',
+            'Rage',
+            'Stealth',
+            'Strength'
+        ];
+
+        $input = $this->cli->radio('Please select a stat:', $moves);
+        return $input->prompt();
     }
 }

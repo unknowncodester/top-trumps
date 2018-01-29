@@ -16,25 +16,7 @@ class Playable extends Player
     {
         $this->gameDialog->revealCard(current($this->cardDeck));
 
-        $moves = [
-            'Alchemy',
-            'Intelligence',
-            'Magic',
-            'Rage',
-            'Stealth',
-            'Strength'
-        ];
-        $handle = fopen($this->readLocation, "r");
-
-        while(1){
-
-            $line = fgets($handle);
-            $move = ucfirst (trim($line));
-
-            if (in_array($move, $moves)) {
-                return $move;
-            }
-        }
+        return $this->gameDialog->takeTurn();
     }
 
     public function setReadLocation($location)
