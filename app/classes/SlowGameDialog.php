@@ -16,72 +16,14 @@ class SlowGameDialog extends GameDialog
 
     public function revealCard(Card $card)
     {
-        $cardStats = [
-            [
-                $card->getName(),
-                ''
-            ],
-            [
-                'Strength',
-                $card->getRage(),
-            ],
-            [
-                'Stealth',
-                $card->getStealth(),
-            ],
-            [
-                'Intelligence',
-                $card->getIntelligence(),
-            ],
-            [
-                'Magic',
-                $card->getMagic(),
-            ],
-            [
-                'Rage',
-                $card->getRage(),
-            ],
-            [
-                'Alchemy',
-                $card->getAlchemy()
-            ]
-        ];
+        $cardDetails = $this->getCardDetails($card);
 
-        $this->cli->table($cardStats);
+        $this->cli->table($cardDetails);
     }
 
     public function announcePlayersMove(Card $playerOneCard, Card $playerTwoCard, string $stat)
     {
-        $playerOneHand = [
-            [
-                $playerOneCard->getName(),
-                ''
-            ],
-            [
-                'Strength',
-                $playerOneCard->getRage(),
-            ],
-            [
-                'Stealth',
-                $playerOneCard->getStealth(),
-            ],
-            [
-                'Intelligence',
-                $playerOneCard->getIntelligence(),
-            ],
-            [
-                'Magic',
-                $playerOneCard->getMagic(),
-            ],
-            [
-                'Rage',
-                $playerOneCard->getRage(),
-            ],
-            [
-                'Alchemy',
-                $playerOneCard->getAlchemy()
-            ]
-        ];
+        $playerOneHand = $this->getCardDetails($playerOneCard);
 
         $this->cli->flank('Player 1 playing card');
         $this->cli->flank('Stat = '.$stat);
@@ -89,36 +31,7 @@ class SlowGameDialog extends GameDialog
 
         sleep(2);
 
-        $playerTwoHand = [
-            [
-                $playerTwoCard->getName(),
-                ''
-            ],
-            [
-                'Strength',
-                $playerTwoCard->getRage(),
-            ],
-            [
-                'Stealth',
-                $playerTwoCard->getStealth(),
-            ],
-            [
-                'Intelligence',
-                $playerTwoCard->getIntelligence(),
-            ],
-            [
-                'Magic',
-                $playerTwoCard->getMagic(),
-            ],
-            [
-                'Rage',
-                $playerTwoCard->getRage(),
-            ],
-            [
-                'Alchemy',
-                $playerTwoCard->getAlchemy()
-            ]
-        ];
+        $playerTwoHand = $this->getCardDetails($playerTwoCard);
 
         $this->cli->flank('Player 2 playing card');
         $this->cli->table($playerTwoHand);
@@ -168,5 +81,47 @@ class SlowGameDialog extends GameDialog
 
         $input = $this->cli->radio('Please select a stat:', $moves);
         return $input->prompt();
+    }
+
+    /**
+     * Gets a cards details of name and stats
+     *
+     * @param Card $card
+     * @return array
+     */
+    private function getCardDetails(Card $card): array
+    {
+        $cardDetails = [
+            [
+                $card->getName(),
+                ''
+            ],
+            [
+                'Strength',
+                $card->getRage(),
+            ],
+            [
+                'Stealth',
+                $card->getStealth(),
+            ],
+            [
+                'Intelligence',
+                $card->getIntelligence(),
+            ],
+            [
+                'Magic',
+                $card->getMagic(),
+            ],
+            [
+                'Rage',
+                $card->getRage(),
+            ],
+            [
+                'Alchemy',
+                $card->getAlchemy()
+            ]
+        ];
+
+        return $cardDetails;
     }
 }
